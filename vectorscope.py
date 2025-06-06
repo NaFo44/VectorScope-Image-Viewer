@@ -6,11 +6,12 @@
 """
 Usage:
 1) Run : python vectorscope.py
-2) Click the squares to set the 16×16 pattern.
+2) Click and drag the squares to set the 16×16 pattern.
 3) Click “Export WAV” to save a 30 s WAV file (you can edit the default name).
 4) Import the WAV into FL Studio.
 5) Add a WaveCandy plugin, choose “VectorScope” and turn the “Update” knob all the way up.
 6) Play the sound: the image appears! – If it flickers or is only half displayed, “compress” the sample until the image is stable.
+
 """
 
 import numpy as np
@@ -134,6 +135,7 @@ class MatrixGUI:
 
         # Initialize MAT_SIZE×MAT_SIZE matrix of zeros
         self.matrix = [[0 for _ in range(MAT_SIZE)] for _ in range(MAT_SIZE)]
+        self.draw_value = None  # Will store value (0 or 1) when dragging
 
         # Calculate canvas size
         canvas_size = MAT_SIZE * CELL_SIZE + (MAT_SIZE + 1) * PADDING
@@ -150,6 +152,8 @@ class MatrixGUI:
 
         # Bind click to toggle cells
         self.canvas.bind("<Button-1>", self._on_canvas_click)
+        # Bind dragging to draw multiple cells
+        self.canvas.bind("<B1-Motion>", self._on_canvas_drag)
 
         # Export button
         bottom_frame = tk.Frame(self.root, pady=5)
@@ -186,14 +190,33 @@ class MatrixGUI:
 
     def _on_canvas_click(self, event):
         """
-        On click, determine cell and toggle its state, then redraw.
+        On click, determine cell, toggle its state, set draw_value,
+        then redraw so dragging uses the same value.
         """
         x, y = event.x, event.y
         col = (x - PADDING) // (CELL_SIZE + PADDING)
         row = (y - PADDING) // (CELL_SIZE + PADDING)
 
         if 0 <= row < MAT_SIZE and 0 <= col < MAT_SIZE:
+            # Toggle the clicked cell
             self.matrix[row][col] ^= 1  # Toggle 0↔1
+            # Store the resulting state; dragging will apply this value
+            self.draw_value = self.matrix[row][col]
+            self._draw_grid()
+
+    def _on_canvas_drag(self, event):
+        """
+        On drag, set each encountered cell to the stored draw_value
+        (so cells become either active or inactive uniformly).
+        """
+        x, y = event.x, event.y
+        col = (x - PADDING) // (CELL_SIZE + PADDING)
+        row = (y - PADDING) // (CELL_SIZE + PADDING)
+
+        if (0 <= row < MAT_SIZE and 0 <= col < MAT_SIZE and
+                self.draw_value is not None and
+                self.matrix[row][col] != self.draw_value):
+            self.matrix[row][col] = self.draw_value
             self._draw_grid()
 
     def _on_export_click(self):
