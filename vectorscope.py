@@ -11,7 +11,6 @@ Usage:
 4) Import the WAV into FL Studio.
 5) Add a WaveCandy plugin, choose “VectorScope” and turn the “Update” knob all the way up.
 6) Play the sound: the image appears! – If it flickers or is only half displayed, “compress” the sample until the image is stable.
-
 """
 
 import numpy as np
