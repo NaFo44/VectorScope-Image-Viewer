@@ -35,8 +35,8 @@ A simple Python/Tkinter application that lets you draw frame-by-frame vector sco
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/NaFo44/video-vectorscope
-   cd video-vectorscope
+   git clone https://github.com/NaFo44/VectorScope-Image-Viewer
+   cd VectorScope-Image-Viewer
    ```
    
 2. Install dependencies:
