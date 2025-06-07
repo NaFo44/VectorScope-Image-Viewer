@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Made by Spectra for theory (and chatgpt for practice xd)
+# vectorscope.py — © 2025 NaFo44 — Licensed under the MIT License
 
 """
 Usage:
