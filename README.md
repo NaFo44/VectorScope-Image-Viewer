@@ -2,7 +2,7 @@
 
 # Video Vectorscope 16×16
 
-A simple Python/Tkinter application that lets you draw frame-by-frame vector scopes on a 16×16 grid and export them as WAV audio files (video-style or looping image-style). A compiled `.exe` version is also available for users without Python.
+A simple Python/Tkinter application that lets you draw frame-by-frame vector scopes on a 16×16 grid and export them as WAV audio files (video-style or looping image-style). A compiled `.exe` version is also available for users without Python (/bin/vectorscope.exe)
 
 ## Table of Contents
 
