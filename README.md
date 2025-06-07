@@ -1,4 +1,4 @@
-## Librabies
+## Libraries
 **Don't forget to :**
 ```
 pip install numpy
