@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-# Created by Spectra for theory (and ChatGPT for practice)
+# vectorscope.py — © 2025 NaFo44 — Licensed under the MIT License
 
 import numpy as np
 import soundfile as sf
@@ -15,7 +15,7 @@ MAT_SIZE = 16                   # Matrix dimensions (16×16)
 CELL_SIZE = 20                  # Pixel size of each cell in the UI
 PADDING = 1                     # Space between cells (pixels)
 
-N_SAMPLES_PER_PIXEL = 100       # Samples per active pixel in the base block
+N_SAMPLES_PER_PIXEL = 100       # Samples per active pixel in the base block (big impact, lower values : higher framerate but bad quality, higher values : bad framerate but nice and clean pixels)
 SIGMA = 0.01                    # Std dev for Gaussian noise (stereo amplitude)
 SAMPLE_RATE = 44100             # Sampling rate for the WAV
 FRAME_DURATION = 0.125          # Duration of each frame in seconds (~1/8 s)
