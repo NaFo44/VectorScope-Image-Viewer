@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # vectorscope_video.py — © 2025 NaFo44 — Licensed under the MIT License
+
 # Modified to handle a “video” frame-by-frame: each frame is converted to audio (≈0.125 s) and WAVs are concatenated.
 
 """
