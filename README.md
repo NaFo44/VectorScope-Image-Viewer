@@ -1,3 +1,13 @@
+## Librabies
+**Don't forget to :**
+```
+pip install numpy
+```
+ and 
+```
+pip install soundfile
+```
+
 ## Image:
 1) Run vectorscope.py
 2) Click the squares to set the 16×16 pattern.
